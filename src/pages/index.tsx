@@ -14,6 +14,7 @@ import CreateSession from '@/components/CreateSession';
 
 
 
+
 export default function Home() {
   const [address, setAddress] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false);
@@ -34,7 +35,7 @@ export default function Home() {
   const paymaster: IPaymaster = new BiconomyPaymaster({
     //https://dashboard.biconomy.io/
     //replace with your own paymaster url from dashboard (otherwise your transaction may not work :( )
-    paymasterUrl: "https://paymaster.biconomy.io/api/v1/80001/bN77UefF7.145fff89-e5e1-40ec-be11-7549878eb08f"
+    paymasterUrl: "https://paymaster.biconomy.io/api/v1/80001/ilaD58luy.fca363dc-9667-424d-9ff8-da8ed82d845f"
   })
 
   const connect = async () => {

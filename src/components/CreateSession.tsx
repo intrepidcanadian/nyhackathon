@@ -73,7 +73,7 @@ const CreateSession: React.FC<props> = ({ smartAccount, address, provider }) => 
         [
           sessionKeyEOA,
           "0xdA5289fCAAF71d52a80A254da614a192b693e977", // erc20 token address
-          "0x322Af0da66D00be980C7aa006377FCaaEee3BDFD", // receiver address
+          "0xC1e40b1C6d209912fAF5C68D59BBD8516323C9cd", // receiver address
           ethers.utils.parseUnits("50".toString(), 6).toHexString(), // 50 usdc amount
         ]
       );
