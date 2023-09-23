@@ -73,12 +73,12 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Session Keys</title>
+        <title>Merchant Escrow</title>
         <meta name="description" content="Build a dApp powered by session keys" />
       </Head>
       <main className={styles.main}>
-        <h1>Session Keys Demo</h1>
-        <h2>Connect and transfer ERC20 tokens without signing on each transfer</h2>
+        <h1>Merchant Escrow Demo</h1>
+        <h2>Merchant Escrow Account ERC20 tokens can be transferred without signing on each transfer</h2>
         {!loading && !address && <button onClick={connect} className={styles.connect}>Connect to Web3</button>}
         {loading && <p>Loading Smart Account...</p>}
         {address && <h2>Smart Account: {address}</h2>}

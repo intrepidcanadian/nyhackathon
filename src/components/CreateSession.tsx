@@ -33,9 +33,13 @@ const CreateSession: React.FC<props> = ({ smartAccount, address, provider }) => 
         setIsSessionKeyModuleEnabled(false);
         return;
       }
+      
     }
     checkSessionModuleEnabled()
   },[isSessionKeyModuleEnabled, address, smartAccount, provider])
+
+
+
 
   const createSession = async (enableSessionKeyModule: boolean) => {
     toast.info('Creating Session...', {
@@ -51,6 +55,8 @@ const CreateSession: React.FC<props> = ({ smartAccount, address, provider }) => 
     if (!address || !smartAccount || !provider) {
       alert("Please connect wallet first")
     }
+
+
     try {
       const erc20ModuleAddr = "0x000000D50C68705bd6897B2d17c7de32FB519fDA"
       // -----> setMerkle tree tx flow
@@ -150,6 +156,7 @@ const CreateSession: React.FC<props> = ({ smartAccount, address, provider }) => 
         <button onClick={() => createSession(true)} >Enable and Create Session</button>
       )}
       {isSessionActive && <ERC20Transfer smartAccount={smartAccount} provider={provider} address={address} />}
+    
     </div>
     
   )

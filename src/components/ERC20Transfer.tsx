@@ -114,8 +114,10 @@ const ERC20Transfer: React.FC<props> = ({ smartAccount, provider, address}) => {
       console.error(err);
     }
   }
+
   return(
     <button onClick={erc20Transfer}>Transfer 0.5 USDC</button>
+
   )
 }
 
