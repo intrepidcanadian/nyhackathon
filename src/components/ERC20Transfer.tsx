@@ -69,9 +69,6 @@ const ERC20Transfer: React.FC<props> = ({ smartAccount, provider, address}) => {
         ethers.utils.parseUnits("1".toString(), decimals)
       );
 
-
-      // 
-
       // generate tx data to erc20 transfer
       const tx1 = {
         to: "0xdA5289fCAAF71d52a80A254da614a192b693e977", //erc20 token address

@@ -7,6 +7,7 @@ import {
   BiconomySmartAccountConfig,
 } from "@biconomy/account";
 import { bundler, paymaster } from "@/constants";
+import Transfer from "./ERC20TransferVariable";
 
 export default function Wallet() {
   const sdkRef = useRef<SocialLogin | null>(null);
@@ -118,7 +119,10 @@ export default function Wallet() {
         {loading && <p>Loading account details...</p>}
 
         {smartAccount && (
-          <Fragment>{/* Add Transfer Component Here */}</Fragment>
+          <Fragment>
+             <Transfer smartAccount={smartAccount} />
+
+          </Fragment>
         )}
       </div>
     </Fragment>

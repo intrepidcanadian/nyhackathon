@@ -13,3 +13,46 @@ export const bundler: IBundler = new Bundler({
 export const paymaster: IPaymaster = new BiconomyPaymaster({
   paymasterUrl: "https://paymaster.biconomy.io/api/v1/80001/ilaD58luy.fca363dc-9667-424d-9ff8-da8ed82d845f",
 });
+
+export const USDC_CONTRACT_ADDRESS =
+  "0xda5289fcaaf71d52a80a254da614a192b693e977";
+
+export const ERC20ABI = [
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "transfer",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "decimals",
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+];
