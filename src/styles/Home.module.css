@@ -5,6 +5,13 @@
   text-align: center;
 }
 
+.container__socials {
+
+  justify-content: right;
+  display: flex;
+}
+
+
 .logo {
   height: 6em;
   padding: 1.5em;

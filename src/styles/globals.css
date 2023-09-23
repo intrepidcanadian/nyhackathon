@@ -14,6 +14,46 @@
   -webkit-text-size-adjust: 100%;
 }
 
+
+.container__socials {
+
+  justify-content: center;
+  display: flex;
+  background-color: blue;
+  color: white;
+}
+
+.container__socials--title {
+  display: flex;
+  background-color: blue;
+  color: white;
+  padding: 1rem;
+}
+
+.component__header {
+
+  margin-left: 30rem;
+  margin-right: 30rem;
+  border-radius: 30px;
+}
+
+.container__socials--button {
+
+  margin: 1rem;
+  
+}
+
+
+.container__socials--button:hover {
+    background-color: white;
+    color: blue;
+    margin: 1rem;
+    font-weight: bold;
+    
+  }
+
+
+
 a {
   font-weight: 500;
   color: #646cff;

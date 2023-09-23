@@ -20,7 +20,7 @@ const ERC20Transfer: React.FC<props> = ({ smartAccount, provider, address}) => {
       return;
     }
     try {
-      toast.info('Transferring 0.5 USDC to recipient...', {
+      toast.info('Transferring 1 USDC to recipient...', {
         position: "top-right",
         autoClose: 15000,
         hideProgressBar: false,
@@ -66,8 +66,11 @@ const ERC20Transfer: React.FC<props> = ({ smartAccount, provider, address}) => {
 
       const { data } = await tokenContract.populateTransaction.transfer(
         "0xC1e40b1C6d209912fAF5C68D59BBD8516323C9cd", // receiver address
-        ethers.utils.parseUnits("0.25".toString(), decimals)
+        ethers.utils.parseUnits("1".toString(), decimals)
       );
+
+
+      // 
 
       // generate tx data to erc20 transfer
       const tx1 = {
@@ -113,12 +116,19 @@ const ERC20Transfer: React.FC<props> = ({ smartAccount, provider, address}) => {
     } catch(err: any) {
       console.error(err);
     }
+    
   }
 
-  return(
-    <button onClick={erc20Transfer}>Transfer 0.5 USDC</button>
 
-  )
+
+  return (
+
+    
+    <button onClick={erc20Transfer}>Transfer 0.5 USDC</button>
+    
+
+  );
+
 }
 
 export default ERC20Transfer;
