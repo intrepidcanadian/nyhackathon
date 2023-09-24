@@ -19,10 +19,17 @@ import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
 
+import {
+  Profile,
+  Publication,
+  Publications,
+  Theme,
+} from "@lens-protocol/widgets-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [selectedView, setSelectedView] = useState<string>("");
   const [address, setAddress] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [smartAccount, setSmartAccount] =
@@ -33,15 +40,28 @@ export default function Home() {
 
   // added to tutorial
 
+  const Wallet = dynamic(
+    () => import("../components/Wallet").then((res) => res.default),
+    { ssr: false }
+  );
 
-const Wallet = dynamic(
-  () => import("../components/Wallet").then((res) => res.default),
-  { ssr: false }
-);
+  function Navbar() {
+    return (
+      <div className={styles.navbar}>
+        <button onClick={() => setSelectedView("social")}>
+          Social Logins and Abstraction
+        </button>
+        <button onClick={() => setSelectedView("merchant")}>
+          Merchant Subscription Demo
+        </button>
+      </div>
+    );
+  }
 
-
-
-  // const inter = Inter({ subsets: ["latin"] });
+  async function onSignIn(tokens, profile) {
+    console.log("tokens: ", tokens);
+    console.log("profile: ", profile);
+  }
 
   const bundler: IBundler = new Bundler({
     //https://dashboard.biconomy.io/
@@ -91,41 +111,52 @@ const Wallet = dynamic(
     }
   };
   console.log({ smartAccount, provider });
-  return (
-    <>
-      <Head>
-        <title>Payment Subscription</title>
-        <meta
-          name="description"
-          content="Build a dApp where merchant can pull funds from a smart account"
-        />
-      </Head>
-      <main className={styles.main}>
-      <div className="component__header">
-          <Suspense fallback={<div>Loading...</div>}>
-            <Wallet />
-          </Suspense>
-        </div>
-        <h1>Merchant Subscription Demo</h1>
 
-        <h2>
-          Merchants can pull funds from a smart account monthly. Consumers deposit funds into account to fill monthly subscription. Multiple signing is not required.
-        </h2>
-        {!loading && !address && (
-          <button onClick={connect} className={styles.connect}>
-            Connect to Web3
-          </button>
-        )}
-        {loading && <p>Loading Smart Account...</p>}
-        {address && <h2>Smart Account: {address}</h2>}
-        {smartAccount && provider && (
-          <CreateSession
-            smartAccount={smartAccount}
-            address={address}
-            provider={provider}
-          />
-        )}
-      </main>
-    </>
+  return ( 
+    <div>
+      <Head>
+        <title>Product Demoes</title>
+      </Head>
+      <div className="container__navbar">
+        <Navbar />
+      </div>
+
+      {selectedView === "social" && (
+        <>
+          <div className="component__header">
+            <Suspense fallback={<div>Loading...</div>}>
+              <Wallet />
+            </Suspense>
+          </div>
+        </>
+      )}
+
+      {selectedView === "merchant" && (
+        <div className="container__merchantsubscription">
+          <h1>Merchant Subscription Demo</h1>
+
+          <h2>
+            Merchants can sends funds from a smart account monthly. Consumers
+            deposit funds into account to fill monthly subscription. Multiple
+            signing is not required.
+          </h2>
+          {!loading && !address && (
+            <button onClick={connect} className={styles.connect}>
+              Connect to Web3
+            </button>
+          )}
+          {loading && <p>Loading Smart Account...</p>}
+          {address && <h2>Smart Account: {address}</h2>}
+          {smartAccount && provider && (
+            <CreateSession
+              smartAccount={smartAccount}
+              address={address}
+              provider={provider}
+            />
+          )}
+        </div>
+      )}
+      </div>
   );
+
 }

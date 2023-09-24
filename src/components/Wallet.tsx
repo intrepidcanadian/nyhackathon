@@ -70,11 +70,8 @@ export default function Wallet() {
 
     setLoading(false);
   }
-  // login() function
-  // setupSmartAccount() function
 
   async function logOut() {
-    // Log out of the smart account
     await sdkRef.current?.logout();
 
     // Hide the wallet
@@ -99,18 +96,41 @@ export default function Wallet() {
 
   return (
     <Fragment>
-      <div className="m-auto flex h-screen flex-col items-center justify-center gap-10 bg-gray-950">
+      <div>
+        <h1 className = "main__title">Social Logins, Bundlers and Paymasters with Biconomy</h1>
+        <div className="container__text">
+          <div className = "container__card">
+            <p className="container__text--explanation">Social Logins</p>
+            <ul className ="container__text--list">
+              <li>Authenticate Wallet with Google Login</li>
+              <li>Lens, Web3Auth, etc. allows for more recognizable approaches of signing in</li>
+            </ul>
+          </div>
+          <div className = "container__card">
+            <p className="container__text--explanation">Bundlers</p>
+            <ul className = "container__text--list">
+              <li>Bundler executes operations and arranges for transaction to be bundled</li>
+            </ul>
+          </div>
+          <div className = "container__card">
+            <p className="container__text--explanation">Paymasters</p>
+            <ul className ="container__text--list">
+              <li>Allows for adoption of a blockchain without interacting with native currency</li>
+              <li>Swaps MATIC with USDC to pay for gas fees</li>
+            </ul>
+          </div>
+        </div>
         <div className="container__socials">
           {/* Logout Button */}
-          {smartAccount && (
-            <button onClick={logOut} className="container__socials--button">
-              Logout
-            </button>
-          )}
           {/* Login Button */}
           {!smartAccount && !loading && (
             <button onClick={login} className="container__socials--button">
-              Login with Google or Facebook
+              Login with Google
+            </button>
+          )}
+          {smartAccount && (
+            <button onClick={logOut} className="container__socials--button">
+              Logout
             </button>
           )}
         </div>
@@ -120,8 +140,7 @@ export default function Wallet() {
 
         {smartAccount && (
           <Fragment>
-             <Transfer smartAccount={smartAccount} />
-
+            <Transfer smartAccount={smartAccount} />
           </Fragment>
         )}
       </div>

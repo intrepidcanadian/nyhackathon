@@ -5,13 +5,6 @@
   text-align: center;
 }
 
-.container__socials {
-
-  justify-content: right;
-  display: flex;
-}
-
-
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -32,6 +25,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.container__card {
+  display: flex;
+  color: black;
 }
 
 @media (prefers-reduced-motion: no-preference) {
