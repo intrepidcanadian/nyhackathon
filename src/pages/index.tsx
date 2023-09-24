@@ -18,13 +18,8 @@ import CreateSession from "@/components/CreateSession";
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
-
-import {
-  Profile,
-  Publication,
-  Publications,
-  Theme,
-} from "@lens-protocol/widgets-react";
+import DID from "@/components/DID";
+import Video from "@/components/Video";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,8 +33,6 @@ export default function Home() {
     null
   );
 
-  // added to tutorial
-
   const Wallet = dynamic(
     () => import("../components/Wallet").then((res) => res.default),
     { ssr: false }
@@ -47,13 +40,20 @@ export default function Home() {
 
   function Navbar() {
     return (
-      <div className={styles.navbar}>
+      <div className="top__container">
+        <button onClick={() => setSelectedView("supply")}>
+          Supply Chain
+        </button>
+        <button onClick={() => setSelectedView("did")}>
+          Decentralized Identity
+        </button>
         <button onClick={() => setSelectedView("social")}>
           Social Logins and Abstraction
         </button>
         <button onClick={() => setSelectedView("merchant")}>
-          Merchant Subscription Demo
+          Special Funded Accounts and Sessions
         </button>
+
       </div>
     );
   }
@@ -112,14 +112,22 @@ export default function Home() {
   };
   console.log({ smartAccount, provider });
 
-  return ( 
+  return (
     <div>
       <Head>
         <title>Product Demoes</title>
+        <script src="https://cdn.roboflow.com/0.2.26/roboflow.js"></script>
       </Head>
       <div className="container__navbar">
         <Navbar />
       </div>
+      {selectedView === "supply" && (
+        <>
+      <div className="container__video">
+        <Video />
+      </div>
+      </>
+      )}
 
       {selectedView === "social" && (
         <>
@@ -133,12 +141,12 @@ export default function Home() {
 
       {selectedView === "merchant" && (
         <div className="container__merchantsubscription">
-          <h1>Merchant Subscription Demo</h1>
+          <h1>Different Payment Types Possible</h1>
 
           <h2>
-            Merchants can sends funds from a smart account monthly. Consumers
-            deposit funds into account to fill monthly subscription. Multiple
-            signing is not required.
+            Specialized checkout sessions like Shop Pay, Apple Pay, Affirm, etc. save
+            addresses and payments methods for increased conversion and
+            checkout. Payments can also be released and drawn from a special account when certain conditions are true/false (i.e. DID verification of supply shipped, location, etc.).
           </h2>
           {!loading && !address && (
             <button onClick={connect} className={styles.connect}>
@@ -156,7 +164,13 @@ export default function Home() {
           )}
         </div>
       )}
-      </div>
-  );
 
+      {selectedView === "did" && (
+        <div className="container__merchantsubscription">
+          <DID />
+
+        </div>
+      )}
+    </div>
+  );
 }

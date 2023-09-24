@@ -27,10 +27,6 @@
   }
 }
 
-.container__card {
-  display: flex;
-  color: black;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {

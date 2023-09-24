@@ -1,0 +1,28 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1"
+  ],
+  "credentialSubject": {
+    "id": "did:ethr:maticnum:0x1e892a8233ab635c1Acd3C731ED480647695CEC7",
+    "name": "Eth New York",
+    "address": "Pier Sixty",
+    "city": "New York",
+    "state": "New York",
+    "country": "USA",
+    "zip": "NY 10011"
+  },
+  "issuer": {
+    "id": "did:ethr:maticnum:0x57ECA04202230B124351497c2FA23b09aD055a7A"
+  },
+  "type": [
+    "VerifiableCredential",
+    "PROOF_OF_ADDRESS"
+  ],
+  "issuanceDate": "2023-09-24T07:46:44.000Z",
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/jpmorganchase/onyx-ssi-sdk/main/src/services/common/schemas/definitions/proofOfAddress.json",
+    "type": "JsonSchemaValidator2018"
+  },
+  "id": "did:ethr:maticnum:0x0A7dcD581c94B03C5543e579f0D9C22A2be81e5E",
+  "expirationDate": "2024-09-24T07:46:44.210Z"
+}
